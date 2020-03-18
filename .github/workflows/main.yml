@@ -1,0 +1,23 @@
+name: 'Commit Message Check'
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+  push:
+    branches:
+      - master
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Commit Type
+        uses: gsactions/commit-message-checker@v1
+        with:
+          pattern: '[[a-zA-Z]\-[0-9]+\]'
+          flags: 'gm'
+          error: 'The first line must contain a jira tag. (eg."[TAG-1234]").'
