@@ -5,7 +5,6 @@ on:
       - opened
       - edited
       - reopened
-      - synchronize
 jobs:
   jira-tag-checker:
     name: Jira Tag Checker
