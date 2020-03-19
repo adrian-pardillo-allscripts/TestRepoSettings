@@ -27,6 +27,7 @@ jobs:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           
   pull-request-title:
+    name: Pull Request Title
     runs-on: ubuntu-latest
     steps:
     - uses: seferov/pr-lint-action@master
@@ -35,6 +36,7 @@ jobs:
         title-regex-flags: 'g'
         
   branch-name-rules:
+    name: Branch Prefix Rules
     runs-on: [ubuntu-latest]
     steps:
       - uses: deepakputhraya/action-branch-name@master
