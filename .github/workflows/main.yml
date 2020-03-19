@@ -7,18 +7,18 @@ on:
       - reopened
       - synchronize
 jobs:
-  check-commit-message:
-    name: Check Commit Message
+  jira-tag-checker:
+    name: Jira Tag Checker
     runs-on: ubuntu-latest
     steps:
-      - name: Check Commit Type
+      - name: Check Jira Tag
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '[a-zA-Z]+\-[0-9]+\ +.+.'
           flags: 'g'
           error: 'The commit title should include a jira tag. (eg."[TAG-1234 Sample commit]").'
   
-  task-completed-check:
+  tasks-completed:
     name: Tasks Completed
     runs-on: ubuntu-latest
     steps:
@@ -33,3 +33,12 @@ jobs:
       with:
         title-regex: '[a-zA-Z]+\-[0-9]+\ +.+.'
         title-regex-flags: 'g'
+        
+  branch-name-rules:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: deepakputhraya/action-branch-name@master
+        with:
+          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
+          allowed_prefixes: 'feature,stable,fix' # All branches should start with the given prefix
+          ignore: master,develop # Ignore exactly matching branch names from convention
