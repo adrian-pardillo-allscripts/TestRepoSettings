@@ -16,15 +16,6 @@ jobs:
           pattern: '[a-zA-Z]+\-[0-9]+\ +.+.'
           flags: 'g'
           error: 'The commit title should include a jira tag. (eg."[TAG-1234 Sample commit]").'
-  
-  tasks-completed:
-    name: Tasks Completed
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Tasks Complete
-        uses: kentaro-m/task-completed-checker-action@v0.1.0
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
           
   pull-request-title:
     name: Pull Request Title
