@@ -26,7 +26,16 @@ jobs:
         with:
           title-regex: '[a-zA-Z]+\-[0-9]+\ +.+.'
           title-regex-flags: 'g'
-        
+  
+  tasks-completed:
+    name: Tasks Completed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Tasks Complete
+        uses: kentaro-m/task-completed-checker-action@v0.1.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+  
   branch-name-rules:
     name: Branch Prefix Rules
     runs-on: [ubuntu-latest]
