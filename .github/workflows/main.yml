@@ -18,9 +18,9 @@ jobs:
       - name: Check Commit Type
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: '[a-zA-Z]+\-[0-9]+'
+          pattern: '[a-zA-Z]+\-[0-9]+\ +.+.'
           flags: 'gm'
-          error: 'The first line must contain a jira tag. (eg."[TAG-1234]").'
+          error: 'The commit title should include a jira tag. (eg."[TAG-1234 Sample commit]").'
   
   task-check:
     name: Tasks Completed
