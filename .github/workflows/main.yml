@@ -41,6 +41,6 @@ jobs:
     steps:
       - uses: deepakputhraya/action-branch-name@master
         with:
-          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
+          regex: '[a-z]+\/[a-zA-Z]+-[0-9]+.+' # Regex the branch should match. This example enforces grouping
           allowed_prefixes: 'feature,bugfix' # All branches should start with the given prefix
           ignore: master
