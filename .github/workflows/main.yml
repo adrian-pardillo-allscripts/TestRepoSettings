@@ -22,7 +22,8 @@ jobs:
     name: Tasks Completed
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/task-completed-checker-action@v0.1.0
+      - name: Check Tasks Complete
+        uses: kentaro-m/task-completed-checker-action@v0.1.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           
@@ -30,16 +31,18 @@ jobs:
     name: Pull Request Title
     runs-on: ubuntu-latest
     steps:
-    - uses: seferov/pr-lint-action@master
-      with:
-        title-regex: '[a-zA-Z]+\-[0-9]+\ +.+.'
-        title-regex-flags: 'g'
+      - name: Check Pull Request Title
+        uses: seferov/pr-lint-action@master
+        with:
+          title-regex: '[a-zA-Z]+\-[0-9]+\ +.+.'
+          title-regex-flags: 'g'
         
   branch-name-rules:
     name: Branch Prefix Rules
     runs-on: [ubuntu-latest]
     steps:
-      - uses: deepakputhraya/action-branch-name@master
+      - name: Check Branch Prefix
+        uses: deepakputhraya/action-branch-name@master
         with:
           regex: '[a-z]+\/[a-zA-Z]+-[0-9]+.+' # Regex the branch should match. This example enforces grouping
           allowed_prefixes: 'feature,bugfix' # All branches should start with the given prefix
