@@ -1,8 +1,6 @@
 name: 'Pull Request Checker'
 on:
   pull_request:
-    branches: 
-      - master
     types:
       - opened
       - edited
@@ -17,13 +15,21 @@ jobs:
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '[a-zA-Z]+\-[0-9]+\ +.+.'
-          flags: 'gm'
+          flags: 'g'
           error: 'The commit title should include a jira tag. (eg."[TAG-1234 Sample commit]").'
   
-  task-check:
+  task-completed-check:
     name: Tasks Completed
     runs-on: ubuntu-latest
     steps:
       - uses: kentaro-m/task-completed-checker-action@v0.1.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          
+  pull-request-title:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: seferov/pr-lint-action@master
+      with:
+        title-regex: '[a-zA-Z]+\-[0-9]+\ +.+.'
+        title-regex-flags: 'g'
